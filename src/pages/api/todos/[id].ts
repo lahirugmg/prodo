@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-const todosFilePath = path.join(process.cwd(), 'data', 'todos.json');
+const todosFilePath = path.join(process.cwd(), 'src/db', 'db.json');
 
 const getTodos = () => {
   const jsonData = fs.readFileSync(todosFilePath, 'utf8');

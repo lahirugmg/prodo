@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-const todosFilePath = path.join(process.cwd(), 'data', 'todos.json');
+const todosFilePath = path.join(process.cwd(), 'src/db', 'db.json');
 
 const getTodos = () => {
   const jsonData = fs.readFileSync(todosFilePath, 'utf8');
@@ -21,6 +21,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(200).json(todos);
       break;
     case 'POST':
+      console.log("Received data for POST:", req.body); // Debugging line
+
       const newTodo = { id: Date.now(), ...req.body };
       const todosAfterAdd = getTodos();
       todosAfterAdd.push(newTodo);

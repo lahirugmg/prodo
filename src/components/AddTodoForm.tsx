@@ -10,6 +10,8 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ onAdd }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Submitting", { title, description }); // Debugging line
+
     onAdd(title, description);
     setTitle('');
     setDescription('');
