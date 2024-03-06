@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import TodoCard from '../components/TodoCard';
 import AddTodoForm from '../components/AddTodoForm';
+import TodoList from '../components/TodoList'; // Import TodoList
 
 interface Todo {
   id: number;
   title: string;
-  description: string;
+  descriptionw: string;
 }
 
 const Home: React.FC = () => {
@@ -30,31 +30,21 @@ const Home: React.FC = () => {
       },
       body: JSON.stringify({ title, description }),
     });
-    // Re-fetch todos to update the list
-    fetchTodos();
+    fetchTodos(); // Re-fetch todos to update the list
   };
 
   const completeTodo = async (id: number) => {
     await fetch(`/api/todos/${id}`, {
       method: 'DELETE',
     });
-    // Re-fetch todos to update the list after deletion
-    fetchTodos();
+    fetchTodos(); // Re-fetch todos to update the list after deletion
   };
 
   return (
     <div className="container mx-auto p-4">
       <AddTodoForm onAdd={addTodo} />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {todos.map((todo) => (
-          <TodoCard
-            key={todo.id}
-            title={todo.title}
-            description={todo.description}
-            onComplete={() => completeTodo(todo.id)}
-          />
-        ))}
-      </div>
+      {/* Use TodoList to render todos */}
+      <TodoList todos={todos} onComplete={completeTodo} />
     </div>
   );
 };
