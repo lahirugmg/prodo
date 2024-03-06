@@ -8,6 +8,12 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+/* Example with custom CSS */
+.todo-card {
+  min-height: 150px; /* Adjust based on content */
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

@@ -8,7 +8,8 @@ interface TodoCardProps {
 
 const TodoCard: React.FC<TodoCardProps> = ({ title, description, onComplete }) => {
   return (
-    <div className="bg-white shadow-md rounded p-4">
+    // Apply a minimum height using Tailwind CSS. Adjust "min-h-[150px]" as needed.
+    <div className="bg-white shadow-md rounded p-4 min-h-[150px]">
       <h2 className="text-xl font-bold">{title}</h2>
       <p>{description}</p>
       <button

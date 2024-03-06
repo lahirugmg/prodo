@@ -23,16 +23,19 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onComplete }) => {
     x: index % 3 * 4, // Adjust based on your grid preferences
     y: Infinity, // Puts it at the lowest possible spot
     w: 4, // Width of the grid item
-    h: 2, // Height of the grid item, adjust as needed
+    h: 6, // Height of the grid item, adjust as needed
   }));
 
   return (
-    <ResponsiveGridLayout className="layout" layouts={{ lg: layout }} cols={{ lg: 12 }} rowHeight={30}>
+    <ResponsiveGridLayout className="layout" layouts={{ lg: layout }} cols={{ lg: 12 }} rowHeight={30}  margin={[10, 10]} >
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} style={{ marginBottom: '10px' }} > 
           <TodoCard title={todo.title} description={todo.description} onComplete={() => onComplete(todo.id)} />
         </div>
+
       ))}
+
+
     </ResponsiveGridLayout>
   );
 };
